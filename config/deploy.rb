@@ -1,4 +1,4 @@
-load 'lib/deploy/seed'
+load 'lib/deploy/seed.rb'
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
