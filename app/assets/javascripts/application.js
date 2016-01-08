@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
@@ -18,7 +19,6 @@
 //= require bootstrap-select
 //= require bootstrap-datepicker
 //= require bootstrap-tokenfield
-//= require jquery.ui.tabs
 //= require select2
 //= require select2_locale_es
 
