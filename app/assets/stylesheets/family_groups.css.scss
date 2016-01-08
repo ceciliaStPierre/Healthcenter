@@ -1,0 +1,55 @@
+// Place all the styles related to the FamilyGroups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.family-group-container
+{
+  margin-left: 20px;
+  display:inline-block;
+}
+.family-group-container img
+{
+  width:200px;
+  height:200px;
+}
+.family-group-container h3{
+  width:200px;
+  font-size: 18pt;
+  text-align: center;
+
+}
+.new-family-member-container
+{
+	margin-top:30px;
+}
+
+.new-family-member-container select, .new-family-member-container input
+{
+  background: transparent;
+  width: 200px;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border-style:solid;
+  border-width:1px;
+  border-radius: 5px;
+  border-color:lightgray;
+  height: 34px;
+}
+
+.new-family-member-container input
+{
+	  border-color:gray;
+	  border-radius: 10px;
+	  width: 80px
+
+}
+
+#remove-patient-input
+{
+  width:22px;
+  height:22px;
+  text-align:center;
+  background: asset-url('cross.png');
+  color: white;
+}

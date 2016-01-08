@@ -1,0 +1,60 @@
+<div class="form-wrapper">
+<%= form_for @plan , :url => {:controller => "plans", :action => "create", :id => @family_group.id}, :html => {:class => "form-horizontal"} do |f| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% @plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label 'Objetivo clinico', :class => "col-lg-4 control-label" %>
+    <div class="col-lg-8">
+      <%= f.text_area :clinical_objective, :class => "form-control", :rows => "4" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Comentarios familia', :class => "col-lg-4 control-label" %>
+    <div class="col-lg-8">
+      <%= f.text_area :family_summary, :class => "form-control", :rows => "4" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+    <div class="col-lg-8">
+      <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]}) %>
+    </div>
+  </div>
+  <div class="form-group">
+      <%= f.label 'Factores de riesgo:', :class =>"col-lg-6 control-label"%>
+      <%= f.label 'Factores protectores:', :class =>"col-lg-6 control-label"%>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-6">
+        <%= f.text_area :risk_details, :class => "form-control", :id => "plan-risk-token" %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.text_area :protection_details, :class => "form-control", :id => "plan-protection-token" %>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <%= f.label 'Nivel de riesgo:', :class => "col-lg-4 control-label"%>
+    <div class="col-lg-8">
+      <%= f.select :risk_factor, options_for_select(PLAN_RISK) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit "Crear", :class => "btn btn-default" %>
+    </div>
+  </div>
+
+
+<% end %>
+</div>
+

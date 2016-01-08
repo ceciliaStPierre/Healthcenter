@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Objetivo Familiar:</strong>
+  <%= @plan.family_summary %>
+</p>
+
+<p>
+  <strong>Objetivo Clinico:</strong>
+  <%= @plan.clinical_objective %>
+</p>
+
+<p>
+  <strong>FActor de Riesgo:</strong>
+  <%= @plan.risk_factor %>
+</p>
+<p>
+  <strong>Estado:</strong>
+  <%= @plan.state %>
+</p>
+<p>
+  <strong>Tipo de plan:</strong>
+  <%= @plan.plan_type %>
+</p>
+
+<br>
+
+<%= link_to 'Editar', edit_plan_path(@plan) %> |
+<%= link_to 'Atras', plans_path %>

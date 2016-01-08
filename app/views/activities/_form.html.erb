@@ -1,0 +1,51 @@
+<div class="form-wrapper">
+<%= form_for @activity , :url => {:action => "create",:plan_id => @plan.id}, :html => {:class => "form-horizontal"} do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label 'Descripción', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_area :description, :class => "form-control", :rows => "4" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Objectivos', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= text_field_tag "objectives", nil, :class => "form-control", :id => "objective-textfield", :rows => "4" %>
+    </div>
+  </div>
+  <div class ="form-group">
+    <%= f.label 'Fecha limite:', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :deadline, :class => "form-control", :id => "datepicker", :'data-behaviour' => 'datepicker', :value => Date.today %>
+    </div>
+  </div>
+  <div class="form-selects">
+    <div class="left-select">
+      <%= f.label 'Tipo de actividad:' %>
+      <%= f.select :activity_type, options_for_select(ACTIVITY_TYPE) %>
+    </div>
+    <div class="right-select">
+      <%= f.label 'Responsable:' %>
+      <%= select_tag "users", options_from_collection_for_select(User.all,"id",:fullname), multiple: true, id: "user-activity-select" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit "Crear", :class => "btn btn-default" %>
+    </div>
+  </div>
+
+<% end %>
+</div>
+
+

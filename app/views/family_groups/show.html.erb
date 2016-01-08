@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+	<h1><%= @family_group.family_name %></h1>
+</div>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Miembros</th>
+      <th>Grupo familiares asociados</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @family_group.patients.each do |patient| %>
+        <tr>
+          <td><%= link_to patient.firstname+" "+patient.father_lastname, patient %></td>
+          <td><%= FamilyGroups(patient.family_groups) %></td>
+          <td>
+              <%= form_tag({:controller => "family_groups", :action => "remove_patient_from_group", :family_group => @family_group.id, :patient => patient.id}, :method => "post") do %>
+                <%= submit_tag '', :id => "remove-patient-input" %>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo Paciente', new_patient_path %>
+
+
+
+ <div class="new-family-member-container">
+    <%= form_tag({:controller => "family_groups", :action => "add_patient_to_group", :family_group => @family_group.id}, :method => "post") do %>
+    <p><strong>Paciente:</strong><%= select("patient", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ] }) %><%= submit_tag 'Agregar' %></p>
+    <% end %>
+  </div>
+<br>
+
+<%= link_to 'Editar', edit_family_group_path(@family_group) %>

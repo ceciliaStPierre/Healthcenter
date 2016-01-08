@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start: 2013-10-28 17:09:36
+  end: 2013-10-28 17:09:36
+  description: MyText
+  is_done: false
+  patient_id: 
+
+two:
+  start: 2013-10-28 17:09:36
+  end: 2013-10-28 17:09:36
+  description: MyText
+  is_done: false
+  patient_id: 

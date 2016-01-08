@@ -1,0 +1,8 @@
+<div class="center">
+	<%= form_tag({:controller => "users", :action => "send_message"}, :method => "post") do %>
+	    <p>Destino:<%= select("user", "id", User.where.not(id: current_user.id).collect {|p| [ p.firstname+" "+p.father_lastname, p.id ] }) %></p>
+		<p>Asunto:<%= text_field_tag "subject" %></p>
+		<p>Mensaje:<%= text_area_tag "body" %></p>
+		<%= submit_tag 'Agregar', :class => "btn" %>
+	<% end %>
+</div>

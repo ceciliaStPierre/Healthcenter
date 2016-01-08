@@ -1,0 +1,5 @@
+PLAN_STATE = ["Abierto", "Cerrado"]
+PLAN_TYPE = ["algo", "algo2"]
+PLAN_RISK = ["Bajo", "Moderado", "Alto"]
+ACTIVITY_TYPE = ["Clinico","Social", "Familiar"]
+SEX_TYPE = ["Masculino", "Femenino"]

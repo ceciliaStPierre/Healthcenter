@@ -1,0 +1,10 @@
+<div class="center">
+	<% @conversation.messages.each do |message| %>
+		<p><%= getMessageHtml(message) %></p>
+	<% end %>
+
+
+	<%= form_tag({:controller => "users", :action => "reply_message", :conversation_id => @conversation.id}, :method => "post") do %>
+	 Mensaje:<%= text_field_tag "content" %><%= submit_tag 'Enviar', :class => "btn" %>
+	<% end %>
+</div>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<div class="people-container">
+  <div class="people-container-left">
+      <%= image_tag(@user.avatar.url(:small)) %>
+  </div>
+  <div class="people-container-right">
+      <p> <strong>Nombre:</strong> <%= @user.firstname+" "+@user.secondname+" "+@user.father_lastname+" "+@user.mother_lastname%></p>
+      <p><strong>Especialidad: </strong><%=@user.speciality %></p>
+      <p><strong>Programa: </strong><%=@user.program%></p>
+      <p><strong>Sector: </strong><%=@user.sector%></p>
+      <p><strong>Correo: </strong><%=@user.email%></p>
+      <p><strong>Teléfono: </strong><%=@user.phone_number%></p>
+  </div>
+</div>
+
+<br>
+
+<% if current_user == @user || current_user.is_admin %>
+	<%= link_to 'Editar', edit_user_path(@user) %>
+<% end %>

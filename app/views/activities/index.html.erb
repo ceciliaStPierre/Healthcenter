@@ -1,0 +1,35 @@
+<h1>Listing activities</h1>
+
+<table>http://www.mmo-champion.com/content/3707-Battleground-Win-Ratios-Upcoming-SoO-Changes-Feedback-Blue-Tweets-DLC-424
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+      <th>Description</th>
+      <th>Is done</th>
+      <th>Patient</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.start %></td>
+        <td><%= activity.end %></td>
+        <td><%= activity.description %></td>
+        <td><%= activity.is_done %></td>
+        <td><%= activity.patient_id %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Editar', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity', new_activity_path %>

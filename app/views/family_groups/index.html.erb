@@ -1,0 +1,20 @@
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Grupo familiar: </th>
+			<th>Integrantes </th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	    <% @family_groups.each do |family_group| %>
+	      <tr>
+	        <td><%= link_to family_group.family_name, family_group %></td>
+	        <td><%= FamilyMembers(family_group.patients) %></td>
+	        <td><%= link_to 'Ver planes', planslink_path(family_group.id) %></td>
+	      </tr>
+	    <% end %>
+	</tbody>
+</table>
+<%= link_to 'Nuevo Grupo', new_family_group_path %>
+

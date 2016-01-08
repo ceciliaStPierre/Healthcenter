@@ -1,0 +1,95 @@
+<div class="form-wrapper">
+  <%= form_for(@patient) do |f| %>
+    <% if @patient.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+        <ul>
+        <% @patient.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label 'Primer Nombre:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :firstname, :class => "form-control" %>
+      </div>
+    </div>
+     <div class="form-group">
+      <%= f.label 'Segundo nombre: ', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :secondname, :class => "form-control" %>
+      </div>
+    </div>
+     <div class="form-group">
+      <%= f.label 'Primer apellido:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :father_lastname, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Segundo apellido:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :mother_lastname, :class => "form-control"%>
+      </div>
+    </div>
+    <div class ="form-group">
+      <%= f.label 'Fecha nacimiento:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :born_date, :class => "form-control", :id => "datepicker", :value => Date.today %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Dirección:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :home_adress, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Número de telefono:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.number_field :phone_number, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+       <%= f.label 'Sexo:', :class => "col-lg-4 control-label"%>
+      <div class="col-lg-8">
+        <%= f.select :sex, options_for_select(SEX_TYPE), :class => "form-control", :id => "sex-select"%>
+      </div>
+    </div>
+    <div class="form-group">
+       <%= f.label 'Enfermedades:', :class => "col-lg-4 control-label"%>
+      <div class="col-lg-8">
+        <%= f.text_area :diseases, :class => "form-control tokenize", :id => "diseases-token", :placeholder => "Presiona enter para agregar" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Factores de riesgo:', :class =>"col-lg-6 control-label"%>
+      <%= f.label 'Factores protectores:', :class =>"col-lg-6 control-label"%>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-6">
+        <%= f.text_area :risk_details, :class => "form-control tokenize patient-details", :id => "patient-risk-token", :placeholder => "Presiona enter para agregar" %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.text_area :protection_details, :class => "form-control tokenize patient-details", :id => "patient-protection-token", :placeholder => "Presiona enter para agregar" %>
+      </div>
+    </div>
+     <div class="form-group">
+       <%= f.label 'Nivel de riesgo:', :class => "col-lg-4 control-label"%>
+      <div class="col-lg-8">
+        <%= f.select :risk_factor, options_for_select(PLAN_RISK), :class => "form-control", :id => "sex-select"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit @button, :class => "btn btn-default" %>
+      </div>
+    </div>
+
+
+  <% end %>
+</div>
+

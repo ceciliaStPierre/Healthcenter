@@ -1,0 +1,18 @@
+
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Participantes </th>
+			<th>Asunto </th>
+		</tr>
+	</thead>
+	<tbody>
+	    <% @conversations.each do |conversation| %>
+	      <tr>
+	        <td><%= link_to conversation.participants.last.firstname, conversation.participants.last %></td>
+	        <td><%= link_to conversation.subject, :action => "conversation", :id => conversation.id %></td>
+	      </tr>
+	    <% end %>
+	</tbody>
+</table>
+<%= link_to "Nueva conversación", new_conversation_path %>

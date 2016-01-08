@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require jquery.ui.tabs
+ *= require bootstrap-select
+ *= require bootstrap-datepicker
+ *= require bootstrap-tokenfield
+ *= require select2
+ */
+ 
+@import "bootstrap";
+@import "bootstrap/theme";
+
+body 
+{
+  min-height: 2000px;
+  padding-top: 70px;
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+textarea
+{
+  resize: none
+}
+
+
+.welcome-links
+{
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  text-align:center;
+}
+.welcome-links a:visited
+{
+	color: #fff;
+}
+
+.center
+{
+	margin-left:auto;
+	margin-right:auto;
+	width:500px;
+  text-align:center;
+}
+
+.form-wrapper
+{
+  width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:70px;
+}
+.form-textinput
+{
+  height:200px;
+}
+
+.left-select, .right-select
+{
+  display:inline-block;
+  width:49%;
+}
+
+.form-selects
+{
+  margin-left:90px;
+}
+
+.form-selects select
+{
+  background: transparent;
+  width: 100px;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border-style:solid;
+  border-width:1px;
+  border-radius: 5px;
+  border-color:lightgray;
+  height: 34px;
+}
+
+.left-select *, .right-select *
+{
+  display:block;
+}
+
+.form-wrapper input
+{
+  float:right;
+}
+
+#user_id
+{
+  width:190px;
+}
+
+.form-wrapper
+{
+  display:block;
+}
+#patient_sex
+{
+  background: transparent;
+  width: 200px;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border-style:solid;
+  border-width:1px;
+  border-radius: 5px;
+  border-color:lightgray;
+  height: 34px;
+}

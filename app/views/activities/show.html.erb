@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="activity-container">
+  <div id="top-activity">
+    <% @activity.users.each do |user| %>
+      <div id="activity-image-name">
+        <div><%= image_tag(user.avatar.url, :border=>0) %></div>
+        <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
+      </div>
+    <% end %>
+  </div>
+  <div id="bottom-activity">
+    <p><strong>Descripción: </strong><%= @activity.description %></p>
+    <p><strong>Fecha limite: </strong><%= @activity.deadline %></p>
+    <p><strong>Tipo actividad: </strong><%= @activity.activity_type %></p>
+    <% if @activity.users.include? current_user %>
+      <%= form_for @activity , :url => {:action => "update"} do |f| %>
+      <p><strong>Terminada: </strong><%= f.check_box :is_done %></p>
+      <p><strong>Objectivos: </strong></p>
+      <% for i in 0..@activity.objectives.length()-1 %>
+      <% objective = @activity.objectives[i] %>
+        <p><%= check_box('objective',i.to_s(), {:checked => objective.is_done}) %> <%= objective.description %></p>
+      <% end %>
+      <p><strong>Observaciones: </strong><%= f.text_area :observations, :class => "form-control", :rows => "3" %></p>
+      <%= f.submit "Actualizar", :id => "edit-activity-button", :class => "btn btn-default" %>
+      <%end%>
+      
+    <% else %>
+      <p><strong>Terminada: </strong><%= check_box_tag 'is_done', 1, @activity.is_done, :disabled => true %></p>
+      <p><strong>Objectivos: </strong></p>
+      <% for i in 0..@activity.objectives.length()-1 %>
+      <% objective = @activity.objectives[i] %>
+        <p><%= check_box_tag 'objective'+i.to_s(), 1, objective.is_done, :disabled => true %> <%= objective.description %></p>
+      <% end %>
+      <p><strong>Observaciones: </strong><%= @activity.observations %></p>
+    <% end %>
+  </div>
+
+</div>
+<% if current_user.is_admin %>
+  <br>
+  <%= link_to 'Eliminar', @activity, method: :delete, data: { confirm: '¿Estas seguro?' } %>
+<% end %>

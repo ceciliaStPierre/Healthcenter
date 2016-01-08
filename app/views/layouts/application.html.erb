@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Healthcenter</title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<% if current_user %>
+			<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+				<div class="container">
+				</div>
+				<div class="navbar-collapse collapse">
+				  <ul class="nav navbar-nav">
+				    <%= nav_link "Inicio", home_welcome_path%>
+					<%= nav_link "Grupos Familiares", family_groups_path%>
+					<%= nav_link "Pacientes", patients_path%>
+					<%= nav_link "Equipo", users_path%>
+					<% if current_user.is_admin %>
+						<%= nav_link "Crear Usuarios", new_user_path%>
+					<% end %>
+				  </ul>
+				  <ul class="nav navbar-nav navbar-right">
+				  	<% if !current_user.firstname.nil? %>
+				  		<li> <%= link_to "Usuario: "+ current_user.firstname, user_path(current_user)%></li>
+				  	<% else %>
+				  		<li> <%= link_to "Usuario: "+ current_user.email, user_path(current_user)%></li>
+				  	<% end %>
+				 	
+				  	<li><%= link_to 'Inbox', inbox_path(current_user) %></li>
+					<li><%= link_to 'Cerrar sesión', session_path, method: :delete %></li>
+				  </ul>
+				</div>	
+			</div>
+		<%end%>
+		<%= yield %>
+
+	</body>
+</html>
