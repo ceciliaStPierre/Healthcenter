@@ -1,4 +1,3 @@
-load 'lib/deploy/seed.rb'
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
@@ -42,10 +41,6 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
     end
-  end
-  desc "reload the database with seed data"
-  task :seed do
-    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
   end
 
   after :publishing, 'deploy:restart'
