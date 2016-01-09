@@ -37,12 +37,18 @@ o4 = Objective.create(description: "Realizar visita", is_done: true)
 o5 = Objective.create(description: "Realizar un informe detallado", is_done: false)
 
 #Asociaciones
-g1.patients << p1
-g1.patients << p2
+fgp1 = FamilyGroupsPatient.create(family_group_id: g1.id, patient_id: p1.id)
+fgp2 = FamilyGroupsPatient.create(family_group_id: g1.id, patient_id: p2.id)
 
-a1.users << u3
-a2.users << u4
-a2.users << u6
+#g1.patients << p1
+#g1.patients << p2
+
+au1 = ActivitiesUser.create(activity_id: a1.id, user_id: u3.id)
+au2 = ActivitiesUser.create(activity_id: a2.id, user_id: u4.id)
+au3 = ActivitiesUser.create(activity_id: a2.id, user_id: u6.id)
+#a1.users << u3
+#a2.users << u4
+#a2.users << u6
 
 a1.objectives << o1
 a1.objectives << o2

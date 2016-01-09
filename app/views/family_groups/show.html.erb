@@ -17,11 +17,11 @@
         <tr>
           <td><%= link_to patient.firstname+" "+patient.father_lastname, patient %></td>
           <td><%= FamilyGroups(patient.family_groups) %></td>
-          <td>
+        <!--  <td>
               <%= form_tag({:controller => "family_groups", :action => "remove_patient_from_group", :family_group => @family_group.id, :patient => patient.id}, :method => "post") do %>
                 <%= submit_tag '', :id => "remove-patient-input" %>
               <% end %>
-          </td>
+          </td>-->
         </tr>
       <% end %>
   </tbody>

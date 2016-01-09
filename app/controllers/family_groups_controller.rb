@@ -24,25 +24,27 @@ class FamilyGroupsController < ApplicationController
   def add_patient_to_group
     @family_group = FamilyGroup.find(params[:family_group])
     @patient = Patient.find(params[:patient]['id'])
-    @family_group.patients << @patient
+    @family_groups_patient = FamilyGroupsPatient.create(family_group_id: @family_group.id, patient_id: @patient.id)
     redirect_to @family_group
   end
 
-  def remove_patient_from_group
-    @family_group = FamilyGroup.find(params[:family_group])
-    @patient = Patient.find(params[:patient])
-    @family_group.patients.delete(@patient)
-    redirect_to @family_group
-  end
+  #def remove_patient_from_group
+    #@family_group = FamilyGroup.find(params[:family_group])
+    #@patient = Patient.find(params[:patient])
+   # @family_groups_patient = FamilyGroupsPatient.where({family_group_id: params[:family_group], patient_id: params[:patient]}).destroy_all
+
+    #redirect_to @family_group
+  #end
 
   # POST /family_groups
   # POST /family_groups.json
   def create
     @family_group = FamilyGroup.new(family_group_params)
+
     @patient = Patient.find(params[:patient_selec]['id'])
     respond_to do |format|
       if @family_group.save
-        @family_group.patients << @patient
+        @family_groups_patient = FamilyGroupsPatient.create(family_group_id: @family_group.id, patient_id: @patient.id)
         @family_group.index_patient_id = @patient.id
         @family_group.family_name = @patient.father_lastname+"-"+@patient.mother_lastname+"-"+@family_group.family_name
         @family_group.save!

@@ -36,8 +36,8 @@ class ActivitiesController < ApplicationController
         end
         #Guardamos al usuario correspondiente
         params[:users].each do |user_id|
-          user = User.find(user_id)
-          @activity.users << user
+          ActivitiesUser.create(activity_id: @activity.id, user_id: user_id)
+          
         end
         @plan = Plan.find(params[:plan_id])
         @plan.activities << @activity
