@@ -100,6 +100,7 @@ function Tabs()
     $("#tabs").tabs();
 }
 
+
 function ImageSize()
 {
 	//Imagen Plan
@@ -138,4 +139,17 @@ function ChangeDisplayPlan()
 	$("#board-"+this.value).show();
 	$('.board-select').val(this.value);
 });
+}
+function ShowPlanDetails(){
+  $('.div-clinico-familiar-social').hide();
+  $('.div-detalle-plan').show();
+  $('.link-mostrar-detalle').hide();
+  $('.link-ocultar-detalle').show();
+
+}
+function HidePlanDetails(){
+  $('.div-clinico-familiar-social').show();
+  $('.div-detalle-plan').hide();
+  $('.link-mostrar-detalle').show();
+  $('.link-ocultar-detalle').hide();
 }

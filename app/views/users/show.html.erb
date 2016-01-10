@@ -15,7 +15,9 @@
 </div>
 
 <br>
-
+<div class="text-center">
+<%= link_to 'Volver ', users_path %>
 <% if current_user == @user || current_user.is_admin %>
-	<%= link_to 'Editar', edit_user_path(@user) %>
+	<%= link_to '| Editar', edit_user_path(@user) %>
 <% end %>
+</div>

@@ -14,6 +14,24 @@ module PlansHelper
 			return "<div class='board-item blue-shadow'>".html_safe
 		end
 	end
+	def RiskFactorColor(plan)
+		if plan.risk_factor == "Alto"
+			#rojo
+			return "<span class='glyphicon glyphicon-warning-sign' style='color:red'></span>".html_safe
+		elsif plan.risk_factor == "Moderado"
+			#amarillo
+			return "<span class='glyphicon glyphicon-warning-sign' style='color:yellow'></span>".html_safe
+
+		elsif plan.risk_factor == "Bajo"
+			#verde
+			return "<span class='glyphicon glyphicon-warning-sign' style='color:green'></span>".html_safe
+
+		else
+			return "<span class='glyphicon glyphicon-warning-sign' style='color:black'></span>".html_safe
+
+			#negro
+		end
+	end
 
 	def ObjectiveDisplay(objective)
 		if objective.is_done

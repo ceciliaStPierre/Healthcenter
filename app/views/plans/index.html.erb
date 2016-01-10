@@ -1,114 +1,226 @@
+<h1>Familia <%= @family_group.family_name %></h1>
+
+
 <div class="board-wrapper">
   <div id="tabs">
     <ul>
+
       <% for i in 0..@plans.length-1 do %>
-        <li><a href="#tabs-<%=i+1%>">Plan <%= i+1%></a></li>
+      <li><a href="#tabs-<%=i+1%>">Plan <%= i+1%></a></li>
       <% end %>
       <% if @plans.length==0 %>
-        <%= link_to 'Nuevo plan',  newplan_path(@family_group.id) %>
+      <%= link_to 'Nuevo plan',  newplan_path(@family_group.id) %>
       <% end %>
+      <%= link_to 'Nuevo plan',  newplan_path(@family_group.id) %>
     </ul>
     <% for i in 0..@plans.length-1 do %>
-      <div id="tabs-<%=i+1%>">
-        <% plan = @plans[i] %>
-        <div class="board">
-          <div class="board-column" id="board-individual">
+    <div id="tabs-<%=i+1%>">
+      <% plan = @plans[i] %>
+      <div class="board">
+        <div class="col-md-3" id="board-options">
+          <div class="link-mostrar-detalle">
+            <h2> <%= link_to "NUEVA ACTIVIDAD",{:controller => :activities, :action => :new, :id => plan.id} %></h2>
+            <a class="link-mostrar-detalle" href="#" onclick="return ShowPlanDetails();"><h2> DETALLES</h2></a>
+          </div>
+          <a class="link-ocultar-detalle" href="#" onclick="return HidePlanDetails();" style="display:none;"><h2> VER ACTIVIDADES</h2></a>
+
+        </div>
+        <div class="div-clinico-familiar-social">
+
+          <div class="board-column col-md-3" id="board-individual">
             <div class="board-title">
               <p>Clinico</p>
             </div>
             <% plan.activities.each do |activity| %>
-              <% if activity.activity_type == "Clinico" %>
-                <%= ActivityDiv(activity) %>
-                  <div class="board-item-top">
-                    <% activity.users.each do |user| %>
-                      <div class="board-image-name">
-                        <%= image_tag(user.avatar.url(:thumb)) %>
-                        <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="board-item-bottom">
-                    <p><%= link_to activity.description, activity %></p>
-                    <% activity.objectives.each do |objective| %>
-                      <p><%= ObjectiveDisplay(objective) %></p>
-                    <% end %>
-                  </div>
-                </div>
-                <% end %>
-            <% end %>
-          </div>
-          <div class="board-column" id="board-family">
-            <div class="board-title">
-              <p>Social</p>
-            </div>
-            <% plan.activities.each do |activity| %>
-              <% if activity.activity_type == "Social" %>
-                <%= ActivityDiv(activity) %>
-                  <div class="board-item-top">
-                    <% activity.users.each do |user| %>
-                      <div class="board-image-name">
-                        <%= image_tag(user.avatar.url(:thumb)) %>
-                        <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="board-item-bottom">
-                    <%= link_to activity.description, activity %>
-                    <% activity.objectives.each do |objective| %>
-                      <p><%= ObjectiveDisplay(objective) %></p>
-                    <% end %>
-                  </div>
-                </div>
-                <% end %>
-            <% end %>
-          </div>
-          <div class="board-column" id="board-social">
-            <div class="board-title">
-              <p>Familiar</p>
-            </div>
-            <% plan.activities.each do |activity| %>
-              <% if activity.activity_type == "Familiar" %>
-                <%= ActivityDiv(activity) %>
-                  <div class="board-item-top">
-                    <% activity.users.each do |user| %>
-                      <div class="board-image-name">
-                        <%= image_tag(user.avatar.url(:thumb)) %>
-                        <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="board-item-bottom">
-                    <%= link_to activity.description, activity %>
-                    <% activity.objectives.each do |objective| %>
-                      <p><%= ObjectiveDisplay(objective) %></p>
-                    <% end %>
-                  </div>
-                </div>
-                <% end %>
-            <% end %>
-          </div>
-          <div class="board-column" id="board-options">
-              <p><strong>Objetivo clínico: </strong></p>
-              <p><%= plan.clinical_objective %></p>
-              <p><strong>Comentarios familia: </strong></p>
-              <p><%= plan.family_summary %></p>
-              <p><strong>Factores de riesgo: </strong></p>
-              <% plan.risk_details.split(",").each do |item| %>
-                    <p> - <%=item%> </p>
+            <% if activity.activity_type == "Clinico" %>
+            <%= ActivityDiv(activity) %>
+            <div class="board-item-top">
+              <% activity.users.each do |user| %>
+              <div class="board-image-name">
+                <%= image_tag(user.avatar.url(:thumb)) %>
+                <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
+              </div>
               <% end %>
-              <p><strong>Factores protectores: </strong></p>
-              <% plan.protection_details.split(",").each do |item| %>
-                    <p> - <%=item%> </p>
+            </div>
+            <div class="board-item-bottom">
+              <p><%= link_to activity.description, activity %></p>
+              <% activity.objectives.each do |objective| %>
+              <p><%= ObjectiveDisplay(objective) %></p>
               <% end %>
-              <p><strong>Nivel de riesgo: </strong></p>
-              <p><%= plan.risk_factor %></p>
-              <p><strong>Estado: </strong></p>
-              <p><%= plan.state %></p>
-              
-              <p> <%= link_to 'Nuevo plan',  newplan_path(@family_group.id) %> | <%= link_to "Nueva Actividad",{:controller => :activities, :action => :new, :id => plan.id} %></p>
-         </div>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+
+        </div>
+
+        <div class="board-column col-md-3" id="board-family">
+          <div class="board-title">
+            <p>Social</p>
+          </div>
+          <% plan.activities.each do |activity| %>
+          <% if activity.activity_type == "Social" %>
+          <%= ActivityDiv(activity) %>
+          <div class="board-item-top">
+            <% activity.users.each do |user| %>
+            <div class="board-image-name">
+              <%= image_tag(user.avatar.url(:thumb)) %>
+              <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
+            </div>
+            <% end %>
+          </div>
+          <div class="board-item-bottom">
+            <%= link_to activity.description, activity %>
+            <% activity.objectives.each do |objective| %>
+            <p><%= ObjectiveDisplay(objective) %></p>
+            <% end %>
+          </div>
+        </div>
+
+        <% end %>
+        <% end %>
+      </div>
+
+      <div class="board-column col-md-3" id="board-social">
+        <div class="board-title">
+          <p>Familiar</p>
+        </div>
+        <% plan.activities.each do |activity| %>
+        <% if activity.activity_type == "Familiar" %>
+        <%= ActivityDiv(activity) %>
+        <div class="board-item-top">
+          <% activity.users.each do |user| %>
+          <div class="board-image-name">
+            <%= image_tag(user.avatar.url(:thumb)) %>
+            <div class="board-name-div"><p class="board-name-p"><%= user.fullname %></p></div>
+          </div>
+          <% end %>
+        </div>
+        <div class="board-item-bottom">
+          <%= link_to activity.description, activity %>
+          <% activity.objectives.each do |objective| %>
+          <p><%= ObjectiveDisplay(objective) %></p>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div><!-- tabs -->
+
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="div-detalle-plan" style="display:none;" >
+    <div class="col-md-9 disabled">
+
+      <!---------------------------form-------------------------------------->
+
+
+      <div class="form-wrapper">
+        <%= form_for (plan) do |f| %>
+        <% if plan.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+          <ul>
+            <% plan.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label 'Objetivo clinico', :class => "col-lg-4 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_area :clinical_objective, :class => "form-control", :rows => "4" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Comentarios familia', :class => "col-lg-4 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_area :family_summary, :class => "form-control", :rows => "4" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+          <div class="col-lg-8">
+            <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Factores de riesgo:', :class =>"col-md-6 control-label"%>
+          <%= f.label 'Factores protectores:', :class =>"col-md-6 control-label"%>
+        </div>
+        <div class="form-group">
+          <div class="col-md-6">
+            <%= f.text_area :risk_details, :class => "form-control", :id => "plan-risk-token" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_area :protection_details, :class => "form-control", :id => "plan-protection-token" %>
+          </div>
+        </div>
+        <div class="form-group">
+            <%= f.label 'Nivel de riesgo:', :class => "col-md-6 control-label"%>
+               
+             
+
+        </div>
+
+        <div class="form-group">
+               <%= RiskFactorColor(plan) %>
+            <%= f.select :risk_factor, PLAN_RISK %>
+        </div>
+
+
+
+
+<div class="form-group">
+          <%= f.label 'Estado:', :class => "col-md-6 control-label"%>
+        </div>
+        <div class="form-group">
+
+            <%= f.select :state, PLAN_STATE %>
+       
+        </div>
+        <div class="form-group">
+          <div class="col-lg-offset-2 col-lg-10">
+            <a class="link-ocultar-detalle btn btn-default" href="#" onclick="return HidePlanDetails();" style="display:none;">Cancelar</a>
+            <%= f.submit "Guardar Cambios", :class => "btn btn-default" %>
+
+          </div>
+
+        </div>
+
+
+        <% end %>
+      </div>
+
+
+
+
+
+      <!-- --------------------------form-------------------------------------->
+
+
+    <!--<p><strong>Objetivo clínico: </strong></p>
+          <p><%= plan.clinical_objective %></p>
+          <p><strong>Comentarios familia: </strong></p>
+          <p><%= plan.family_summary %></p>
+          <p><strong>Factores de riesgo: </strong></p>
+          <% plan.risk_details.split(",").each do |item| %>
+          <p> - <%=item%> </p>
+          <% end %>
+          <p><strong>Factores protectores: </strong></p>
+          <% plan.protection_details.split(",").each do |item| %>
+          <p> - <%=item%> </p>
+          <% end %>
+          <p><strong>Nivel de riesgo: </strong></p>
+          <p><%= plan.risk_factor %></p>
+          <p><strong>Estado: </strong></p>
+          <p><%= plan.state %></p>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+</div><!-- tabs -->
 </div>

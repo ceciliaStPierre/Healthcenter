@@ -66,12 +66,8 @@
           <%= f.text_field :email, :class => "form-control" %>
         </div>
       </div>
-      <div class="form-group">
-        <label class="col-lg-4 control-label">Contraseña Actual </label>
-        <div class="col-lg-8">
-          <%= password_field_tag :current_password, params[:current_password], placeholder: "Contraseña actual", :class => "form-control" %>
-        </div>
-      </div>
+
+            <label><%= link_to 'Cambiar Contraseña', password_change_path(@user.id) %></label>
 
       <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
@@ -79,7 +75,6 @@
         </div>
       </div>
 
-      <%= link_to 'Cambiar Contraseña', password_change_path(@user.id) %>
 
 <% end %>
 

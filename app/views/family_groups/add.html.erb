@@ -1,0 +1,14 @@
+<div class="center">
+  <h1>Familia <%= @family_group.family_name %></h1>
+</div>
+
+
+
+
+ <div class="new-family-member-container">
+    <%= form_tag({:controller => "family_groups", :action => "add_patient_to_group", :family_group => @family_group.id}, :method => "post") do %>
+    <p><strong>Seleccionar Paciente Existente:</strong><%= select("patient", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ] }) %><%= submit_tag 'Agregar' %></p>
+    <% end %>
+  </div>
+<%= link_to 'Cancelar', family_group_path(@family_group.id) %>
+ <!-- <%= link_to 'Crear Nuevo Paciente', new_patient_path %>-->

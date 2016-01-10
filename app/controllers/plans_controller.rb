@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  before_action :set_plan, only: [:show,:edit,  :update, :destroy]
 
   # GET /plans
   # GET /plans.json
@@ -52,7 +52,7 @@ class PlansController < ApplicationController
   def update
     respond_to do |format|
       if @plan.update(plan_params)
-        format.html { redirect_to @plan, notice: 'Plan was successfully updated.' }
+        format.html { redirect_to planslink_path(@plan.family_group.id) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

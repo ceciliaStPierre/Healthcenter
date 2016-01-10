@@ -1,5 +1,5 @@
 class FamilyGroupsController < ApplicationController
-  before_action :set_family_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_family_group, only: [:show, :edit, :update, :destroy ,:add]
 
   # GET /family_groups
   # GET /family_groups.json
@@ -19,6 +19,9 @@ class FamilyGroupsController < ApplicationController
 
   # GET /family_groups/1/edit
   def edit
+  end
+
+  def add
   end
 
   def add_patient_to_group

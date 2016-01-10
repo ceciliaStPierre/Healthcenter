@@ -60,7 +60,7 @@ class ActivitiesController < ApplicationController
           objective.is_done = params[:objective][i.to_s()]
           objective.save!
         end
-        format.html { redirect_to @activity, notice: '¡Actividad actualizada!.' }
+        format.html { redirect_to planslink_path(@activity.plan.family_group.id), notice: '¡Actividad actualizada!.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

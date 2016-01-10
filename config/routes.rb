@@ -15,8 +15,9 @@ Healthcenter::Application.routes.draw do
   post 'users/send_message'
   post 'plans/index'
   post 'family_groups/add_patient_to_group'
-  post 'family_groups/remove_patient_from_group'
+  #post 'family_groups/remove_patient_from_group'
 
+  get 'family_groups/add' => 'family_groups#add'
   resources :family_groups
 
   resources :users
@@ -25,6 +26,7 @@ Healthcenter::Application.routes.draw do
 
   resources :activities
 
+  get 'plans/edit' => 'plans#edit'
   resources :plans
 
   resources :welcome
