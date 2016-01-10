@@ -29,14 +29,14 @@
       <%= f.text_field :deadline, :class => "form-control", :id => "datepicker", :'data-behaviour' => 'datepicker', :value => Date.today %>
     </div>
   </div>
-  <div class="form-selects">
+  <div class="form-selects ">
     <div class="left-select">
       <%= f.label 'Tipo de actividad:' %>
-      <%= f.select :activity_type, options_for_select(ACTIVITY_TYPE) %>
+      <%= f.select :activity_type, ACTIVITY_TYPE, {}, {:class => "form-control"} %>
     </div>
     <div class="right-select">
       <%= f.label 'Responsable:' %>
-      <%= select_tag "users", options_from_collection_for_select(User.all,"id",:fullname), multiple: true, id: "user-activity-select" %>
+      <%= select_tag "users", options_from_collection_for_select(User.all,"id",:fullname), multiple: true, id: "user-activity-select", class: "form-control" %>
     </div>
   </div>
   <div class="form-group">

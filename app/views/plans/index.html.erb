@@ -1,4 +1,4 @@
-<h1>Familia <%= @family_group.family_name %></h1>
+<h1 class="text-center">Familia <%= @family_group.family_name %></h1>
 
 
 <div class="board-wrapper">
@@ -25,9 +25,8 @@
           <a class="link-ocultar-detalle" href="#" onclick="return HidePlanDetails();" style="display:none;"><h2> VER ACTIVIDADES</h2></a>
 
         </div>
-        <div class="div-clinico-familiar-social">
 
-          <div class="board-column col-md-3" id="board-individual">
+          <div class="board-column col-md-3 div-clinico-familiar-social" id="board-individual">
             <div class="board-title">
               <p>Clinico</p>
             </div>
@@ -54,7 +53,7 @@
 
         </div>
 
-        <div class="board-column col-md-3" id="board-family">
+        <div class="board-column col-md-3 div-clinico-familiar-social" id="board-family">
           <div class="board-title">
             <p>Social</p>
           </div>
@@ -81,7 +80,7 @@
         <% end %>
       </div>
 
-      <div class="board-column col-md-3" id="board-social">
+      <div class="board-column col-md-3 div-clinico-familiar-social" id="board-social">
         <div class="board-title">
           <p>Familiar</p>
         </div>
@@ -107,7 +106,6 @@
       <% end %>
       <% end %>
     </div>
-  </div>
   <div class="div-detalle-plan" style="display:none;" >
     <div class="col-md-9 disabled">
 

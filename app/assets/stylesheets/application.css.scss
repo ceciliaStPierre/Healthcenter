@@ -15,6 +15,7 @@
  *= require bootstrap-datepicker
  *= require bootstrap-tokenfield
  *= require select2
+ *= require select2-bootstrap
  */
  
 @import "bootstrap";
@@ -22,9 +23,9 @@
 
 body 
 {
-  min-height: 2000px;
+  
   padding-top: 70px;
-  width:80%;
+  width:90%;
   margin-left:auto;
   margin-right:auto;
 }
@@ -57,15 +58,13 @@ textarea
 
 .form-wrapper
 {
-  width:500px;
+  width:90%;
   margin-left:auto;
   margin-right:auto;
   margin-top:70px;
+  display:block;
 }
-.form-textinput
-{
-  height:200px;
-}
+
 
 .left-select, .right-select
 {
@@ -73,33 +72,17 @@ textarea
   width:49%;
 }
 
-.form-selects
-{
-  margin-left:90px;
-}
 
-.form-selects select
-{
-  background: transparent;
-  width: 100px;
-  padding: 5px;
-  font-size: 16px;
-  line-height: 1;
-  border-style:solid;
-  border-width:1px;
-  border-radius: 5px;
-  border-color:lightgray;
-  height: 34px;
-}
 
 .left-select *, .right-select *
 {
   display:block;
 }
 
-.form-wrapper input
+.form-wrapper input, .form-wrapper select, .form-wrapper textarea
 {
   float:right;
+  margin:5px !important;
 }
 
 #user_id
@@ -107,20 +90,6 @@ textarea
   width:190px;
 }
 
-.form-wrapper
-{
-  display:block;
-}
-#patient_sex
-{
-  background: transparent;
-  width: 200px;
-  padding: 5px;
-  font-size: 16px;
-  line-height: 1;
-  border-style:solid;
-  border-width:1px;
-  border-radius: 5px;
-  border-color:lightgray;
-  height: 34px;
-}
+
+
+
