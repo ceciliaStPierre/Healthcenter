@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show,:edit,  :update, :destroy]
+  before_action :plan_log, only: [:index]
 
   # GET /plans
   # GET /plans.json
@@ -80,5 +81,10 @@ class PlansController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
       params.require(:plan).permit(:owner_id, :family_summary, :clinical_objective, :risk_factor, :state, :plan_type, :close_reason, :close_datetime, :risk_details, :protection_details)
+    end
+
+    def plan_log
+      Planlog.create([{ user_id: current_user.id, family_group_id:params[:id], timestamp: Time.now }]);
+      
     end
 end

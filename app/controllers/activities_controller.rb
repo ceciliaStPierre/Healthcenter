@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :plan_log, only: [:show]
+
 
   # GET /activities
   # GET /activities.json
@@ -89,5 +91,10 @@ class ActivitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
       params.require(:activity).permit(:description, :is_done, :observations, :activity_type, :deadline)
+    end
+
+    def plan_log
+      Planlog.create([{ user_id: current_user.id, activity_id:params[:id] , timestamp: Time.now}]);
+      
     end
 end

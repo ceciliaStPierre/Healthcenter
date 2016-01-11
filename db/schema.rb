@@ -85,14 +85,10 @@ ActiveRecord::Schema.define(version: 20140212231427) do
 
   create_table "patients", force: true do |t|
     t.string   "firstname",          limit: 100,              null: false
-    t.string   "secondname",         limit: 100,              null: false
     t.string   "father_lastname",    limit: 100,              null: false
     t.string   "mother_lastname",    limit: 100,              null: false
     t.date     "born_date",                                   null: false
     t.string   "sex",                                         null: false
-    t.text     "home_adress",        limit: 200,              null: false
-    t.integer  "phone_number",       limit: 8
-    t.integer  "contact_number"
     t.string   "genogram_url"
     t.string   "record_url"
     t.datetime "created_at"
@@ -154,6 +150,13 @@ ActiveRecord::Schema.define(version: 20140212231427) do
     t.boolean  "updating_password",             default: false
     t.string   "program",                       default: ""
     t.string   "sector",                        default: ""
+  end
+
+  create_table "planlogs", force: true do |t|
+    t.integer "user_id"
+    t.integer "family_group_id"
+    t.integer "activity_id"
+    t.datetime "timestamp"
   end
 
 end

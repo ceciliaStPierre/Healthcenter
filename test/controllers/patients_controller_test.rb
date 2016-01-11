@@ -18,7 +18,7 @@ class PatientsControllerTest < ActionController::TestCase
 
   test "should create patient" do
     assert_difference('Patient.count') do
-      post :create, patient: { born_date: @patient.born_date, contact_number: @patient.contact_number, father_lastname: @patient.father_lastname, firstname: @patient.firstname, genogram_url: @patient.genogram_url, home_adress: @patient.home_adress, mother_lastname: @patient.mother_lastname, phone_number: @patient.phone_number, record_url: @patient.record_url, secondname: @patient.secondname, sex: @patient.sex }
+      post :create, patient: { born_date: @patient.born_date,  father_lastname: @patient.father_lastname, firstname: @patient.firstname, genogram_url: @patient.genogram_url,  mother_lastname: @patient.mother_lastname,  record_url: @patient.record_url,  sex: @patient.sex }
     end
 
     assert_redirected_to patient_path(assigns(:patient))
@@ -35,7 +35,7 @@ class PatientsControllerTest < ActionController::TestCase
   end
 
   test "should update patient" do
-    patch :update, id: @patient, patient: { born_date: @patient.born_date, contact_number: @patient.contact_number, father_lastname: @patient.father_lastname, firstname: @patient.firstname, genogram_url: @patient.genogram_url, home_adress: @patient.home_adress, mother_lastname: @patient.mother_lastname, phone_number: @patient.phone_number, record_url: @patient.record_url, secondname: @patient.secondname, sex: @patient.sex }
+    patch :update, id: @patient, patient: { born_date: @patient.born_date,  father_lastname: @patient.father_lastname, firstname: @patient.firstname, genogram_url: @patient.genogram_url,  mother_lastname: @patient.mother_lastname, record_url: @patient.record_url,  sex: @patient.sex }
     assert_redirected_to patient_path(assigns(:patient))
   end
 
