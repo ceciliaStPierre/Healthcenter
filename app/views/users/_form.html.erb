@@ -67,10 +67,11 @@
         </div>
       </div>
 
-            <label><%= link_to 'Cambiar Contraseña', password_change_path(@user.id) %></label>
+            
 
       <div class="form-group">
-        <div class="col-lg-offset-2 col-lg-10">
+        <label class="col-lg-4 control-label"><%= link_to 'Cambiar Contraseña', password_change_path(@user.id) %></label>
+        <div class="col-lg-8">
           <%= f.submit "Actualizar", :class => "btn btn-default" %>
         </div>
       </div>

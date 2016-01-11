@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="col-md-2">
 
-<h2><%= link_to 'CREAR GRUPO', new_family_group_path %></h2>
-<h2><strong><%= link_to 'VOLVER', family_groups_path %></strong></h2>
+<%= link_to 'Volver', family_groups_path , :class=>"btn btn-default btn-100" %>
+<%= link_to 'Editar', edit_family_group_path(@family_group), :class=>"btn btn-default btn-100" %>
+<%= link_to 'Agregar Paciente', {:controller=> "family_groups",:action=>"add", :id=>@family_group.id}, :class=>"btn btn-default btn-100" %>
+
 
 </div>
 <div class="col-md-10">
@@ -23,7 +25,7 @@
       <% @family_group.patients.each do |patient| %>
         <tr>
           <td><%= link_to patient.firstname+" "+patient.father_lastname, patient %></td>
-          <td><%= distance_of_time_in_words(patient.born_date, Time.now) %></td>
+          <td><%=  (Date.today-patient.born_date).to_i/365  %></td>
           <!--<td><%= FamilyGroups(patient.family_groups) %></td>-->
 
         </tr>
@@ -31,15 +33,4 @@
   </tbody>
 </table>
 
-<!--<%= link_to 'Nuevo Paciente', new_patient_path %>-->
-<%= link_to 'Agregar Paciente', {:controller=> "family_groups",:action=>"add", :id=>@family_group.id} %>
-
- <!--<div class="new-family-member-container">
-    <%= form_tag({:controller => "family_groups", :action => "add_patient_to_group", :family_group => @family_group.id}, :method => "post") do %>
-    <p><strong>Paciente:</strong><%= select("patient", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ] }) %><%= submit_tag 'Agregar' %></p>
-    <% end %>
-  </div>
-<br>-->
-|
-<%= link_to 'Editar', edit_family_group_path(@family_group) %>
 </div>

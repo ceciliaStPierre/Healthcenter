@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<div class="col-md-2">
+<%= link_to 'Editar', edit_patient_path(@patient), :class=>"btn btn-default btn-100" %>
+</div>
+<div class="col-md-10">
 <div class="people-container">
-      <h3> <strong>Nombre:</strong> <%= @patient.firstname+" "+@patient.secondname+" "+@patient.father_lastname+" "+@patient.mother_lastname%></h3>
+      <h3> <strong>Nombre:</strong> <%= @patient.firstname+" "+@patient.father_lastname+" "+@patient.mother_lastname%></h3>
       <p> <strong>Fecha de nacimiento:</strong> <%=@patient.born_date.strftime("%d/%m/%Y") %></p>
       <p><strong>Sexo: </strong><%=@patient.sex %></p>
-      <p><strong>Dirección: </strong><%=@patient.home_adress%></p>
-      <p><strong>Teléfono del paciente: </strong><%=@patient.phone_number%></p>
+      
       <p><strong>Listado de enfermedades:</strong></p>
       <% @patient.diseases.split(",").each do |disease| %>
             <%= DiseaseDisplay(disease) %>
@@ -27,7 +30,3 @@
   </div>
 </div>
 
-<br>
-<div class="text-center">
-<%= link_to 'Editar', edit_patient_path(@patient) %>
-</div>

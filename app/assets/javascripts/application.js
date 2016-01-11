@@ -53,6 +53,7 @@ function ResizeText()
 }
 function Tokenize()
 {
+  $('.tokenize').tokenfield();
 
 	//Token para lista de enfermedades
 	var left_token_size = $('#diseases-token').width();

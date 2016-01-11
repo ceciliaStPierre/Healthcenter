@@ -12,36 +12,41 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= f.label 'Descripción', :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-      <%= f.text_area :description, :class => "form-control", :rows => "4" %>
+    <%= f.label 'Descripción', :class => "col-lg-4 control-label" %>
+    <div class="col-lg-8">
+      <%= f.text_area :description, :class => "form-control form-textarea", :rows => "4" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label 'Objectivos', :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
+    <%= f.label 'Objectivos', :class => "col-lg-4 control-label" %>
+    <div class="col-lg-8">
       <%= text_field_tag "objectives", nil, :class => "form-control", :id => "objective-textfield", :rows => "4" %>
     </div>
   </div>
   <div class ="form-group">
-    <%= f.label 'Fecha limite:', :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
+    <%= f.label 'Fecha limite:', :class => "col-lg-4 control-label" %>
+    <div class="col-lg-8">
       <%= f.text_field :deadline, :class => "form-control", :id => "datepicker", :'data-behaviour' => 'datepicker', :value => Date.today %>
     </div>
   </div>
-  <div class="form-selects ">
-    <div class="left-select">
-      <%= f.label 'Tipo de actividad:' %>
+  <div class="form-group ">
+          <%= f.label 'Tipo de actividad:', :class => "col-lg-4 control-label" %>
+
+    <div class="col-lg-8">
       <%= f.select :activity_type, ACTIVITY_TYPE, {}, {:class => "form-control"} %>
     </div>
-    <div class="right-select">
-      <%= f.label 'Responsable:' %>
+  </div>
+    <div class="form-group ">
+      <%= f.label 'Responsable:' , :class => "col-lg-4 control-label"%>
+
+    <div class="col-lg-8" >
       <%= select_tag "users", options_from_collection_for_select(User.all,"id",:fullname), multiple: true, id: "user-activity-select", class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= link_to 'Volver',  planslink_path(@plan.family_group.id), :class => "btn btn-default"  %>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-8">
+      <%= link_to 'Cancelar',  planslink_path(@plan.family_group.id), :class => "btn btn-default form-btn pull-left"  %>
       <%= f.submit "Crear", :class => "btn btn-default" %>
     </div>
   </div>

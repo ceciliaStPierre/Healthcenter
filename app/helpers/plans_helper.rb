@@ -20,7 +20,7 @@ module PlansHelper
 			return "<span class='glyphicon glyphicon-warning-sign' style='color:red'></span>".html_safe
 		elsif plan.risk_factor == "Moderado"
 			#amarillo
-			return "<span class='glyphicon glyphicon-warning-sign' style='color:yellow'></span>".html_safe
+			return "<span class='glyphicon glyphicon-warning-sign' style='color:orange'></span>".html_safe
 
 		elsif plan.risk_factor == "Bajo"
 			#verde

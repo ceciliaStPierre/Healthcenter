@@ -1,8 +1,65 @@
-<h1>Editing family_group</h1>
+<h1 class="text-center">Editar Familia <%= @family_group.family_name  %></h1>
 
-<%= render 'form' %>
 
-<br>
 
-<%= link_to 'Show', @family_group %> 
-<%= link_to 'Atras', family_groups_path %>
+
+<div class="form-wrapper">
+  <%= form_for(@family_group) do |f| %>
+    <% if @family_group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@family_group.errors.count, "error") %> prohibited this family_group from being saved:</h2>
+
+        <ul>
+        <% @family_group.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="form-group">
+    <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+    <div class="col-lg-8">
+      <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]}) %>
+    </div>
+  </div>
+    <div class="form-group">
+      <%= f.label 'Identificador adicional:', :class => "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :family_name, :class => "form-control" %>
+      </div>
+    </div>
+
+
+<div class="form-group">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-8">
+<%= link_to 'Cancelar', @family_group , :class=>"btn btn-default form-btn  pull-left"%> 
+        <%= f.submit "Actualizar", :class => "btn btn-default" %>
+
+</div>
+
+
+    
+
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-wrapper">
+
+</div>

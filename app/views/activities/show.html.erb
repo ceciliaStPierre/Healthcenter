@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
 <div class="activity-container">
+  <div class="form-wrapper">
+
   <div id="top-activity">
     <% @activity.users.each do |user| %>
       <div id="activity-image-name">
@@ -21,7 +22,13 @@
       <% objective = @activity.objectives[i] %>
         <p><%= check_box('objective',i.to_s(), {:checked => objective.is_done}) %> <%= objective.description %></p>
       <% end %>
-      <p><strong>Observaciones: </strong><%= f.text_area :observations, :class => "form-control", :rows => "3" %></p>
+      <p><strong>Observaciones: </strong></p>
+      <%= f.text_area :observations, :class => "form-control form-textarea", :rows => "3" %>
+
+      <%= link_to 'Cancelar',planslink_path(@activity.plan.family_group.id) ,:class => "btn btn-default form-btn pull-left" %>
+      <% if current_user.is_admin %>
+  <%= link_to 'Eliminar', @activity, method: :delete, data: { confirm: '¿Estas seguro?' },:class => "btn btn-default form-btn" %>
+<% end %>
       <%= f.submit "Actualizar", :id => "edit-activity-button", :class => "btn btn-default" %>
       <%end%>
       
@@ -33,11 +40,15 @@
         <p><%= check_box_tag 'objective'+i.to_s(), 1, objective.is_done, :disabled => true %> <%= objective.description %></p>
       <% end %>
       <p><strong>Observaciones: </strong><%= @activity.observations %></p>
+            <%= link_to 'Volver',planslink_path(@activity.plan.family_group.id) ,:class => "btn btn-default form-btn pull-left" %>
+
+      <% if current_user.is_admin %>
+  <%= link_to 'Eliminar', @activity, method: :delete, data: { confirm: '¿Estas seguro?' },:class => "btn btn-default form-btn" %>
+<% end %>
     <% end %>
+    
   </div>
 
 </div>
-<% if current_user.is_admin %>
-  <br>
-  <%= link_to 'Eliminar', @activity, method: :delete, data: { confirm: '¿Estas seguro?' } %>
-<% end %>
+</div>
+<br>

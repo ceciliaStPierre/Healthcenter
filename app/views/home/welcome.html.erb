@@ -1,8 +1,8 @@
 <% if notice %>
-<div class="notice"><%= notice %></div>
+<div class="notice text-center"><%= notice %></div>
 <% end -%>
 <% if alert %>
-<div class="alert"><%= alert %></div>
+<div class="alert text-center"><%= alert %></div>
 <% end -%>
 
 <% if ! current_user %>
@@ -13,7 +13,7 @@
 </div>
 <% else -%>
 
-<h1>MIS PLANES </h1>
+<h1>Mis Planes </h1>
 <% @myfamilies.each do |family_group| %>
 
 <div class="col-md-6">
