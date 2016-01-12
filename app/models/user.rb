@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	acts_as_messageable
 
 	has_secure_password
-	has_attached_file :avatar, :styles => { :medium => "300x300", :small => "200x200>", :thumb => "100x100>" }, :default_url => "/assets/missing.png"
+	has_attached_file :avatar, :styles => { :medium => "300x300", :small => "200x200>", :thumb => "100x100>" }, :default_url => "missing.png"
 
 	validates :firstname, presence: true
 	validates :father_lastname, presence: true
