@@ -14,8 +14,9 @@
 	</thead>
 	<tbody>
 	    <% @family_groups.each do |family_group| %>
+	    <% family_group_full_name = family_group.family_name.to_s+': '+family_group.family_description.to_s %>
 	      <tr>
-	        <td><%= link_to family_group.family_name, family_group %></td>
+	        <td><%= link_to family_group_full_name, family_group %></td>
 	        <td><%= FamilyMembers(family_group.patients) %></td>
 	        <td><%= link_to 'Ver planes', planslink_path(family_group.id) %></td>
 	      </tr>

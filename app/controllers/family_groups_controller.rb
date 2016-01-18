@@ -49,7 +49,7 @@ class FamilyGroupsController < ApplicationController
       if @family_group.save
         @family_groups_patient = FamilyGroupsPatient.create(family_group_id: @family_group.id, patient_id: @patient.id)
         @family_group.index_patient_id = @patient.id
-        @family_group.family_name = @patient.father_lastname+"-"+@patient.mother_lastname+"-"+@family_group.family_name
+        @family_group.family_name = @patient.father_lastname+"-"+@patient.mother_lastname
         @family_group.save!
         format.html { redirect_to @family_group, notice: 'Family group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @family_group }
@@ -92,6 +92,6 @@ class FamilyGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def family_group_params
-      params.require(:family_group).permit(:family_name)
+      params.require(:family_group).permit(:family_name, :family_description)
     end
 end

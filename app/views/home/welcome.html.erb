@@ -17,7 +17,7 @@
 <% @myfamilies.each do |family_group| %>
 
 <div class="col-md-6">
-  <h4>Familia <%= family_group.family_name %></h4>
+  <h4>Familia <%= family_group.family_name %>: <%= family_group.family_description %></h4>
 </div>
 <div class="col-md-6">
   <%= link_to "Ver Planes", {:controller => "plans",:action => "index",  :id=>family_group.id}, class: "btn btn-default" %>

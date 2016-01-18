@@ -1,6 +1,6 @@
 module PatientsHelper
 	def FamilyGroups(family_groups)
-		family_groups.map {|f| link_to f.family_name, family_group_path(f)}.join(', ').html_safe
+		family_groups.map {|f| link_to (f.family_name.to_s+": "+f.family_description.to_s), family_group_path(f)}.join(', ').html_safe
 	end
 
 	def DiseaseDisplay(disease)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212231427) do
+ActiveRecord::Schema.define(version: 20160117202943) do
 
   create_table "activities", force: true do |t|
     t.text     "description"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140212231427) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "index_patient_id"
+    t.string   "family_description"
   end
 
   create_table "family_groups_patients", id: false, force: true do |t|
@@ -99,6 +100,13 @@ ActiveRecord::Schema.define(version: 20140212231427) do
     t.text     "diseases",                       default: ""
   end
 
+  create_table "planlogs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "family_group_id"
+    t.integer  "activity_id"
+    t.datetime "timestamp"
+  end
+
   create_table "plans", force: true do |t|
     t.text     "family_summary"
     t.text     "clinical_objective"
@@ -150,13 +158,6 @@ ActiveRecord::Schema.define(version: 20140212231427) do
     t.boolean  "updating_password",             default: false
     t.string   "program",                       default: ""
     t.string   "sector",                        default: ""
-  end
-
-  create_table "planlogs", force: true do |t|
-    t.integer "user_id"
-    t.integer "family_group_id"
-    t.integer "activity_id"
-    t.datetime "timestamp"
   end
 
 end

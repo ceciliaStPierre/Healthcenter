@@ -1,4 +1,5 @@
 <h1 class="text-center">Familia <%= @family_group.family_name %></h1>
+<h2 class="text-center"><%= @family_group.family_description %></h2>
 
 
 <div class="board-wrapper">
@@ -67,7 +68,7 @@
           <% end %>
         </div>
         <div class="board-item-bottom">
-          <%= link_to activity.description, activity %>
+          <p><%= link_to activity.description, activity %></p>
           <% activity.objectives.each do |objective| %>
           <p><%= ObjectiveDisplay(objective) %></p>
           <% end %>
@@ -94,7 +95,7 @@
         <% end %>
       </div>
       <div class="board-item-bottom">
-        <%= link_to activity.description, activity %>
+        <p><%= link_to activity.description, activity %></p>
         <% activity.objectives.each do |objective| %>
         <p><%= ObjectiveDisplay(objective) %></p>
         <% end %>
@@ -144,14 +145,14 @@
         <div class="form-group">
           <%= f.label 'Factores de riesgo:', :class =>"col-lg-4 control-label"%>
           <div class="col-lg-8">
-            <%= f.text_area :risk_details, :class => "form-control tokenize" %>
+            <%= f.text_area :risk_details, :class => "form-control tokenize", :placeholder=>"Ingrese y presione enter" %>
 
           </div>
         </div>
         <div class="form-group">
           <%= f.label 'Factores protectores:', :class =>"col-lg-4 control-label"%>
           <div class="col-lg-8">
-            <%= f.text_area :protection_details, :class => "form-control tokenize" %>
+            <%= f.text_area :protection_details, :class => "form-control tokenize",:placeholder=>"Ingrese y presione enter" %>
           </div>
         </div>
         <div class="form-group">

@@ -92,10 +92,14 @@ textarea
   display:block;
 }
 
-.form-wrapper input, .form-wrapper select, .form-textarea,.form-btn, .tokenfield
+.form-wrapper input, .form-wrapper select, .form-textarea,.form-btn, .tokenfield, .select2
 {
   float:right;
   margin:5px !important;
+}
+.token-input
+{
+  float:left !important;
 }
 
 

@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="col-md-2">
 
-<%= link_to 'Volver', family_groups_path , :class=>"btn btn-default btn-100" %>
 <%= link_to 'Editar', edit_family_group_path(@family_group), :class=>"btn btn-default btn-100" %>
 <%= link_to 'Agregar Paciente', {:controller=> "family_groups",:action=>"add", :id=>@family_group.id}, :class=>"btn btn-default btn-100" %>
 
@@ -11,6 +10,7 @@
 
 <div class="center">
 	<h1>Familia <%= @family_group.family_name %></h1>
+  <h2><%= @family_group.family_description %></h2>
 </div>
 
 <table class="table table-condensed">
