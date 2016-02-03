@@ -12,40 +12,40 @@
   </div>
   <% end %>
   <div class="form-group">
-    <%= f.label 'Objetivo clinico', :class => "col-lg-4 control-label" %>
+    <%= f.label 'Clinical Target', :class => "col-lg-4 control-label" %>
     <div class="col-lg-8">
       <%= f.text_area :clinical_objective, :class => "form-control form-textarea", :rows => "4" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label 'Comentarios familia', :class => "col-lg-4 control-label" %>
+    <%= f.label 'Family Reviews', :class => "col-lg-4 control-label" %>
     <div class="col-lg-8">
       <%= f.text_area :family_summary, :class => "form-control form-textarea", :rows => "4" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+    <%= f.label 'Index Patient:', :class => "col-lg-4 control-label"%>
     <div class="col-lg-8">
       <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]}, {:class => "form-control"}) %>
     </div>
   </div>
   
   <div class="form-group">
-    <%= f.label 'Factores de riesgo:', :class =>"col-lg-4 control-label"%>
+    <%= f.label 'Risk Factors:', :class =>"col-lg-4 control-label"%>
     <div class="col-lg-8">
-      <%= f.text_area :risk_details, :class => "form-control", :id => "plan-risk-token", :placeholder=>"Ingrese y presione enter" %>
+      <%= f.text_area :risk_details, :class => "form-control", :id => "plan-risk-token", :placeholder=>"Write and press enter" %>
     </div>
   </div>
   <div class="form-group">
 
-    <%= f.label 'Factores protectores:', :class =>"col-lg-4 control-label"%>
+    <%= f.label 'Protection Factors:', :class =>"col-lg-4 control-label"%>
     <div class="col-lg-8">
-      <%= f.text_area :protection_details, :class => "form-control", :id => "plan-protection-token", :placeholder=>"Ingrese y presione enter" %>
+      <%= f.text_area :protection_details, :class => "form-control", :id => "plan-protection-token", :placeholder=>"Write and press enter" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label 'Nivel de riesgo:', :class => "col-lg-4 control-label"%>
+    <%= f.label 'Risk Level:', :class => "col-lg-4 control-label"%>
     <div class="col-lg-8">
       <%= f.select :risk_factor, PLAN_RISK,{},{:class => "form-control"} %>
     </div>
@@ -56,9 +56,9 @@
   <div class="form-group">
     <div class="col-lg-4"></div>
     <div class="col-lg-8">
-      <%= link_to 'Cancelar', plans_path(id:@family_group.id),:class => "btn btn-default form-btn pull-left" %>
+      <%= link_to 'Cancel', plans_path(id:@family_group.id),:class => "btn btn-default form-btn pull-left" %>
 
-      <%= f.submit "Crear", :class => "btn btn-default" %>
+      <%= f.submit "Create", :class => "btn btn-default" %>
     </div>
   </div>
 

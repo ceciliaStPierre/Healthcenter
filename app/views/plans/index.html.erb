@@ -1,4 +1,4 @@
-<h1 class="text-center">Familia <%= @family_group.family_name %></h1>
+<h1 class="text-center"> <%= @family_group.family_name %> Family</h1>
 <h2 class="text-center"><%= @family_group.family_description %></h2>
 
 
@@ -10,7 +10,7 @@
       <li><a href="#tabs-<%=i+1%>">Plan <%= i+1%></a></li>
       <% end %>
 
-      <%= link_to 'Nuevo plan',  newplan_path(@family_group.id), :class=>"btn btn-default btn-nuevo-plan" %>
+      <%= link_to 'New plan',  newplan_path(@family_group.id), :class=>"btn btn-default btn-nuevo-plan" %>
     </ul>
     <% for i in 0..@plans.length-1 do %>
     <div id="tabs-<%=i+1%>">
@@ -18,19 +18,19 @@
       <div class="board">
         <div class="col-md-3" id="board-options">
           <div class="link-mostrar-detalle">
-            <%= link_to "Nueva Actividad",{:controller => :activities, :action => :new, :id => plan.id},:class => "btn btn-default btn-100" %>
-            <a class="link-mostrar-detalle btn btn-default btn-100" href="#" onclick="return ShowPlanDetails();"> Detalles</a>
+            <%= link_to "New Activity",{:controller => :activities, :action => :new, :id => plan.id},:class => "btn btn-default btn-100" %>
+            <a class="link-mostrar-detalle btn btn-default btn-100" href="#" onclick="return ShowPlanDetails();"> Details</a>
           </div>
-          <a class="link-ocultar-detalle btn btn-default btn-100" href="#" onclick="return HidePlanDetails();" style="display:none;">Ver Actividades</a>
+          <a class="link-ocultar-detalle btn btn-default btn-100" href="#" onclick="return HidePlanDetails();" style="display:none;">Show Activities</a>
 
         </div>
 
         <div class="board-column col-md-3 div-clinico-familiar-social" id="board-individual">
           <div class="board-title">
-            <p>Clinico</p>
+            <p>Clinical</p>
           </div>
           <% plan.activities.each do |activity| %>
-          <% if activity.activity_type == "Clinico" %>
+          <% if activity.activity_type == "Clinical" %>
           <%= ActivityDiv(activity) %>
           <div class="board-item-top">
             <% activity.users.each do |user| %>
@@ -125,38 +125,38 @@
         </div>
         <% end %>
         <div class="form-group">
-          <%= f.label 'Objetivo clinico', :class => "col-lg-4 control-label" %>
+          <%= f.label 'Clinical Target', :class => "col-lg-4 control-label" %>
           <div class="col-lg-8">
             <%= f.text_area :clinical_objective, :class => "form-control form-textarea", :rows => "4" %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label 'Comentarios familia', :class => "col-lg-4 control-label" %>
+          <%= f.label 'Family Reviews', :class => "col-lg-4 control-label" %>
           <div class="col-lg-8">
             <%= f.text_area :family_summary, :class => "form-control form-textarea", :rows => "4" %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+          <%= f.label 'Index Patient:', :class => "col-lg-4 control-label"%>
           <div class="col-lg-8">
             <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]},{:class => "form-control"}) %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label 'Factores de riesgo:', :class =>"col-lg-4 control-label"%>
+          <%= f.label 'Risk Factors:', :class =>"col-lg-4 control-label"%>
           <div class="col-lg-8">
-            <%= f.text_area :risk_details, :class => "form-control tokenize", :placeholder=>"Ingrese y presione enter" %>
+            <%= f.text_area :risk_details, :class => "form-control tokenize", :placeholder=>"Write and press enter" %>
 
           </div>
         </div>
         <div class="form-group">
-          <%= f.label 'Factores protectores:', :class =>"col-lg-4 control-label"%>
+          <%= f.label 'Protection Factors:', :class =>"col-lg-4 control-label"%>
           <div class="col-lg-8">
-            <%= f.text_area :protection_details, :class => "form-control tokenize",:placeholder=>"Ingrese y presione enter" %>
+            <%= f.text_area :protection_details, :class => "form-control tokenize",:placeholder=>"Write and press enter" %>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-4 control-label">Nivel de riesgo:
+          <label class="col-lg-4 control-label">Risk Level:
 <%= RiskFactorColor(plan) %> 
           </label>
            
@@ -171,7 +171,7 @@
 
 
         <div class="form-group">
-          <%= f.label 'Estado:', :class => "col-lg-4 control-label"%>
+          <%= f.label 'State:', :class => "col-lg-4 control-label"%>
           <div class="col-lg-8">
 
             <%= f.select :state, PLAN_STATE, {},{:class => "form-control"} %>
@@ -182,8 +182,8 @@
         <div class="form-group">
           <div class="col-lg-4"></div>
           <div class="col-lg-8">
-                        <a class="link-ocultar-detalle btn btn-default pull-left form-btn" href="#" onclick="return HidePlanDetails();" style="display:none;">Cancelar</a>
-            <%= f.submit "Guardar Cambios", :class => "btn btn-default " %>
+                        <a class="link-ocultar-detalle btn btn-default pull-left form-btn" href="#" onclick="return HidePlanDetails();" style="display:none;">Cancel</a>
+            <%= f.submit "Save Changes", :class => "btn btn-default " %>
 
 
           </div>
