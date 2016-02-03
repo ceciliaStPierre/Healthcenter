@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 <div class="col-md-2">
 
-<%= link_to 'Editar', edit_family_group_path(@family_group), :class=>"btn btn-default btn-100" %>
-<%= link_to 'Agregar Paciente', {:controller=> "family_groups",:action=>"add", :id=>@family_group.id}, :class=>"btn btn-default btn-100" %>
+<%= link_to 'Edit', edit_family_group_path(@family_group), :class=>"btn btn-default btn-100" %>
+<%= link_to 'Add Patient', {:controller=> "family_groups",:action=>"add", :id=>@family_group.id}, :class=>"btn btn-default btn-100" %>
 
 
 </div>
 <div class="col-md-10">
 
 <div class="text-center">
-	<h1>Familia <%= @family_group.family_name %></h1>
+	<h1> <%= @family_group.family_name %> Family</h1>
   <h2><%= @family_group.family_description %></h2>
 </div>
 
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>Miembros</th>
-      <th>Edad</th>
+      <th>Members</th>
+      <th>Age</th>
       <th></th>
     </tr>
   </thead>

@@ -13,13 +13,13 @@
     <% end %>
 
   <div class="form-group">
-    <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+    <%= f.label 'Index Patient:', :class => "col-lg-4 control-label"%>
     <div class="col-lg-8">
       <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]}) %>
     </div>
   </div>
     <div class="form-group">
-      <%= f.label 'Identificador adicional:', :class => "col-lg-4 control-label" %>
+      <%= f.label 'Additional Identifier:', :class => "col-lg-4 control-label" %>
       <div class="col-lg-8">
         <%= f.text_field :family_description, :class => "form-control" %>
       </div>
@@ -27,8 +27,8 @@
     <div class="form-group">
   <div class="col-lg-4"></div>
   <div class="col-lg-8">
-<%= link_to 'Cancelar', family_groups_path , :class=>"btn btn-default form-btn  pull-left"%> 
-        <%= f.submit "Crear", :class => "btn btn-default" %>
+<%= link_to 'Cancel', family_groups_path , :class=>"btn btn-default form-btn  pull-left"%> 
+        <%= f.submit "Create", :class => "btn btn-default" %>
       </div>
     </div>
 

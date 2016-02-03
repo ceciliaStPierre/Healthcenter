@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Familia <%= @family_group.family_name %></h1>
+  <h1> <%= @family_group.family_name %> Family</h1>
     <h2> <%= @family_group.family_description %></h2>
 
 </div>
@@ -11,16 +11,16 @@
     <%= form_tag({:controller => "family_groups", :action => "add_patient_to_group", :family_group => @family_group.id}, :method => "post") do %>
   <div class="form-group">
 
-    <label class="col-lg-4 control-label">Seleccionar Paciente Existente:</label>
+    <label class="col-lg-4 control-label">Select Existing Patient:</label>
 <div class="col-lg-8">
       <%= select("patient", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ] },{},:class=>"form-control") %>
 </div>
 <div class="form-group">
   <div class="col-lg-4"></div>
   <div class="col-lg-8">
-    <%= link_to 'Cancelar', family_group_path(@family_group.id),  :class => "btn btn-default form-btn pull-left" %>
+    <%= link_to 'Cancel', family_group_path(@family_group.id),  :class => "btn btn-default form-btn pull-left" %>
 
-      <%= submit_tag 'Agregar',  :class => "btn btn-default" %>
+      <%= submit_tag 'Add',  :class => "btn btn-default" %>
 </div>
 
     <% end %>

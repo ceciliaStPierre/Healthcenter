@@ -1,4 +1,4 @@
-<h1 class="text-center">Editar Familia <%= @family_group.family_name  %></h1>
+<h1 class="text-center">Edit  <%= @family_group.family_name  %> Family</h1>
 <h2 class="text-center"><%= @family_group.family_description %></h2>
 
 
@@ -19,13 +19,13 @@
     <% end %>
 
   <div class="form-group">
-    <%= f.label 'Paciente índice:', :class => "col-lg-4 control-label"%>
+    <%= f.label 'Index Patient:', :class => "col-lg-4 control-label"%>
     <div class="col-lg-8">
       <%= select("patient_selec", "id", Patient.all.collect {|p| [ p.firstname+" "+p.father_lastname, p.id ]}) %>
     </div>
   </div>
     <div class="form-group">
-      <%= f.label 'Identificador adicional:', :class => "col-lg-4 control-label" %>
+      <%= f.label 'Aditional Identifier:', :class => "col-lg-4 control-label" %>
       <div class="col-lg-8">
         <%= f.text_field :family_description, :class => "form-control" %>
       </div>
@@ -35,8 +35,8 @@
 <div class="form-group">
   <div class="col-lg-4"></div>
   <div class="col-lg-8">
-<%= link_to 'Cancelar', @family_group , :class=>"btn btn-default form-btn  pull-left"%> 
-        <%= f.submit "Actualizar", :class => "btn btn-default" %>
+<%= link_to 'Cancel', @family_group , :class=>"btn btn-default form-btn  pull-left"%> 
+        <%= f.submit "Update", :class => "btn btn-default" %>
 
 </div>
 
