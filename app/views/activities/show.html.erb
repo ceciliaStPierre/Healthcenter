@@ -11,39 +11,39 @@
     <% end %>
   </div>
   <div id="bottom-activity">
-    <p><strong>Descripción: </strong><%= @activity.description %></p>
-    <p><strong>Fecha limite: </strong><%= @activity.deadline %></p>
-    <p><strong>Tipo actividad: </strong><%= @activity.activity_type %></p>
+    <p><strong>Descripction: </strong><%= @activity.description %></p>
+    <p><strong>Deadline: </strong><%= @activity.deadline %></p>
+    <p><strong>Activity Type: </strong><%= @activity.activity_type %></p>
     <% if @activity.users.include? current_user %>
       <%= form_for @activity , :url => {:action => "update"} do |f| %>
-      <p><strong>Terminada: </strong><%= f.check_box :is_done %></p>
-      <p><strong>Objectivos: </strong></p>
+      <p><strong>Finished: </strong><%= f.check_box :is_done %></p>
+      <p><strong>Objectives: </strong></p>
       <% for i in 0..@activity.objectives.length()-1 %>
       <% objective = @activity.objectives[i] %>
         <p><%= check_box('objective',i.to_s(), {:checked => objective.is_done}) %> <%= objective.description %></p>
       <% end %>
-      <p><strong>Observaciones: </strong></p>
+      <p><strong>Observations: </strong></p>
       <%= f.text_area :observations, :class => "form-control form-textarea", :rows => "3" %>
 
-      <%= link_to 'Cancelar',planslink_path(@activity.plan.family_group.id) ,:class => "btn btn-default form-btn pull-left" %>
+      <%= link_to 'Cancel',planslink_path(@activity.plan.family_group.id) ,:class => "btn btn-default form-btn pull-left" %>
       <% if current_user.is_admin %>
-  <%= link_to 'Eliminar', @activity, method: :delete, data: { confirm: '¿Estas seguro?' },:class => "btn btn-default form-btn" %>
+  <%= link_to 'Delete', @activity, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-default form-btn" %>
 <% end %>
-      <%= f.submit "Actualizar", :id => "edit-activity-button", :class => "btn btn-default" %>
+      <%= f.submit "Update", :id => "edit-activity-button", :class => "btn btn-default" %>
       <%end%>
       
     <% else %>
-      <p><strong>Terminada: </strong><%= check_box_tag 'is_done', 1, @activity.is_done, :disabled => true %></p>
-      <p><strong>Objectivos: </strong></p>
+      <p><strong>Finished: </strong><%= check_box_tag 'is_done', 1, @activity.is_done, :disabled => true %></p>
+      <p><strong>Objectives: </strong></p>
       <% for i in 0..@activity.objectives.length()-1 %>
       <% objective = @activity.objectives[i] %>
         <p><%= check_box_tag 'objective'+i.to_s(), 1, objective.is_done, :disabled => true %> <%= objective.description %></p>
       <% end %>
-      <p><strong>Observaciones: </strong><%= @activity.observations %></p>
-            <%= link_to 'Volver',planslink_path(@activity.plan.family_group.id) ,:class => "btn btn-default form-btn pull-left" %>
+      <p><strong>Observations: </strong><%= @activity.observations %></p>
+            <%= link_to 'Back',planslink_path(@activity.plan.family_group.id) ,:class => "btn btn-default form-btn pull-left" %>
 
       <% if current_user.is_admin %>
-  <%= link_to 'Eliminar', @activity, method: :delete, data: { confirm: '¿Estas seguro?' },:class => "btn btn-default form-btn" %>
+  <%= link_to 'Delete', @activity, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-default form-btn" %>
 <% end %>
     <% end %>
     
