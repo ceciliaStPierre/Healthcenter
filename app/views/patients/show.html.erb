@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <div class="col-md-2">
-<%= link_to 'Editar', edit_patient_path(@patient), :class=>"btn btn-default btn-100" %>
+<%= link_to 'Edit', edit_patient_path(@patient), :class=>"btn btn-default btn-100" %>
 </div>
 <div class="col-md-10">
 <div class="people-container">
-      <h3> <strong>Nombre:</strong> <%= @patient.firstname+" "+@patient.father_lastname+" "+@patient.mother_lastname%></h3>
-      <p> <strong>Fecha de nacimiento:</strong> <%=@patient.born_date.strftime("%d/%m/%Y") %></p>
-      <p><strong>Sexo: </strong><%=@patient.sex %></p>
+      <h3> <strong>Name:</strong> <%= @patient.firstname+" "+@patient.father_lastname+" "+@patient.mother_lastname%></h3>
+      <p> <strong>Birth Date:</strong> <%=@patient.born_date.strftime("%d/%m/%Y") %></p>
+      <p><strong>Sex: </strong><%=@patient.sex %></p>
       
-      <p><strong>Listado de enfermedades:</strong></p>
+      <p><strong>Deseases List:</strong></p>
       <% @patient.diseases.split(",").each do |disease| %>
             <%= DiseaseDisplay(disease) %>
       <% end %>
       
-            <p><strong>Factores de riesgo: </strong></p>
+            <p><strong>Risk Factors: </strong></p>
             <% @patient.risk_details.split(",").each do |item| %>
                   <p> - <%=item%> </p>
             <% end %>
       
       
-            <p><strong>Factores protectores: </strong></p>
+            <p><strong>Protection Factors: </strong></p>
             <% @patient.protection_details.split(",").each do |item| %>
                   <p> - <%=item%> </p>
             <% end %>
       
-      <p><strong>Nivel de riesgo: </strong><%=@patient.risk_factor %></p>
+      <p><strong>Risk Level: </strong><%=@patient.risk_factor %></p>
 
   </div>
 </div>
