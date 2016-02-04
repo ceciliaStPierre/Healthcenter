@@ -14,13 +14,13 @@ class PatientsController < ApplicationController
 
   # GET /patients/new
   def new
-    @button = "Crear"
+    @button = "Create"
     @patient = Patient.new
   end
 
   # GET /patients/1/edit
   def edit
-    @button = "Actualizar"
+    @button = "Update"
   end
 
   # POST /patients

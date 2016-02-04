@@ -15,14 +15,14 @@ module PlansHelper
 		end
 	end
 	def RiskFactorColor(plan)
-		if plan.risk_factor == "Alto"
+		if plan.risk_factor == "High"
 			#rojo
 			return "<span class='glyphicon glyphicon-warning-sign' style='color:red'></span>".html_safe
-		elsif plan.risk_factor == "Moderado"
+		elsif plan.risk_factor == "Medium"
 			#amarillo
 			return "<span class='glyphicon glyphicon-warning-sign' style='color:orange'></span>".html_safe
 
-		elsif plan.risk_factor == "Bajo"
+		elsif plan.risk_factor == "Low"
 			#verde
 			return "<span class='glyphicon glyphicon-warning-sign' style='color:green'></span>".html_safe
 

@@ -32,7 +32,7 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @patient = Patient.find(params[:patient_selec]['id'])
     @family_group = FamilyGroup.find(params[:id])
-    @plan.state = "Abierto"
+    @plan.state = "Open"
 
     respond_to do |format|
       if @plan.save

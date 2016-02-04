@@ -91,7 +91,7 @@ function Tokenize()
 function UserSelect()
 {
 	$("#user-activity-select").select2({
-    placeholder: "Uno o más responsables",
+    placeholder: "One or more people in charge",
     theme: "bootstrap"
 });
 }
